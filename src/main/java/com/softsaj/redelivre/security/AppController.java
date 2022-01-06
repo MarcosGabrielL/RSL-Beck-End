@@ -15,6 +15,7 @@ import com.softsaj.redelivre.security.AuthRequest;
 import com.softsaj.redelivre.security.User;
 import com.softsaj.redelivre.security.JwtUtil;
 import com.softsaj.redelivre.services.PersonService;
+import com.softsaj.redelivre.repositories.PersonRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
