@@ -36,6 +36,8 @@ public class AppController {
     @Autowired
     private UserRepository userRepo;
     @Autowired
+    private PersonRepository personRepo;
+    @Autowired
     private PersonService vs;
     @Autowired
     private JwtUtil jwtUtil;
@@ -88,7 +90,7 @@ public ResponseEntity<User> processRegister(@RequestBody User user) {
     person.setId(user.getId().intValue());
     person.setUser(user.getFirstName());
     person.setNome(user.getFirstName()+" "+user.getLastName());
-    vs.addPerson(person);
+    personRepo.addPerson(person);
     
      
     return new ResponseEntity<>(newUser, HttpStatus.CREATED);
