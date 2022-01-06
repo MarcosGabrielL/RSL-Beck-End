@@ -30,11 +30,11 @@ public class Person{
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    public User() {
+    public Person() {
         super();
     }
 
-    public User(Long id, String email, String password, String firstName, String lastName) {
+    public Person(Long id, String email, String password, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -100,7 +100,7 @@ public class Person{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final User other = (User) obj;
+        final Person other = (Person) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
