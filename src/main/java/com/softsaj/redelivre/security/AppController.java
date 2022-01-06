@@ -91,7 +91,7 @@ public ResponseEntity<User> processRegister(@RequestBody User user) {
     person.setId(user.getId().intValue());
     person.setUser(user.getFirstName());
     person.setNome(user.getFirstName()+" "+user.getLastName());
-    personRepo.addPerson(person);
+    personRepo.save(person);
     
      
     return new ResponseEntity<>(newUser, HttpStatus.CREATED);
