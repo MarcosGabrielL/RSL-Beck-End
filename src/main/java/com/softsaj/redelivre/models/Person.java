@@ -20,8 +20,13 @@ import javax.persistence.ManyToOne;
  *
  * @author Marcos
  */
+import java.util.Objects;
+import javax.persistence.*;
+
+
 @Entity
-public class Person implements Serializable {
+@Table(name = "persons")
+public class Person{
     
 @Id   
 private int id;
