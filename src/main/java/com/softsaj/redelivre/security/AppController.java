@@ -87,11 +87,11 @@ public ResponseEntity<User> processRegister(@RequestBody User user) {
     
     //Cria Cinefilo
     Person person = new Person();
-    person.setEmail(user.getEmail());
-    person.setId(user.getId().intValue());
-    person.setUser(user.getFirstName());
-    person.setNome(user.getFirstName()+" "+user.getLastName());
-    personRepo.save(person);
+    //person.setEmail(user.getEmail());
+    //person.setId(user.getId().intValue());
+    //person.setUser(user.getFirstName());
+    //person.setNome(user.getFirstName()+" "+user.getLastName());
+    personRepo.save(user);
     
      
     return new ResponseEntity<>(newUser, HttpStatus.CREATED);

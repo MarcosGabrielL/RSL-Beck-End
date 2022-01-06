@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @author Marcos
  */
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Integer>{
+public interface PersonRepository extends JpaRepository<Person, Long> {
     
      Optional<Person> findPersonById(Integer id);
      
