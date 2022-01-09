@@ -10,8 +10,8 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "persons")
-public class Person{
+@Table(name = "posts")
+public class Post{
     
   
     @Id
@@ -20,26 +20,39 @@ public class Person{
      
     @Column(nullable = false, unique = true, length = 45)
     private String email;
+    
+    @Column(nullable = false, unique = true, length = 45)
+    private String idperson;
      
-    @Column(nullable = false, length = 64)
-    private String password;
+    /*1 - Texto
+      2 - Imagem
+      3 - Video
+      4 - Enquete
+      5 - Stories
+      6 - Reel*/
+    @Column(nullable = false, length = 1)
+    private String tipo;
      
-    @Column(name = "first_name", nullable = false, length = 20)
-    private String firstName;
+    @Column(name = "hora", nullable = false, length = 10)
+    private String hora;
      
-    @Column(name = "last_name", nullable = false, length = 64)
-    private String lastName;
+    @Column(name = "hastags", nullable = false)
+    private String hastags;
+    
+    @Column(name = "local", nullable = false)
+    private String local;
 
-    public Person() {
+    public Post() {
         super();
     }
 
-    public Person(Long id, String email, String password, String firstName, String lastName) {
+    public Post(Long id, String email, String tipo, String hora, String hastags, String local) {
         this.id = id;
         this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.tipo = tipo;
+        this.hora = hora;
+        this.hastags = hastags;
+        this.local = local;
     }
 
     public Long getId() {
@@ -58,29 +71,39 @@ public class Person{
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getHora() {
+        return hora;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getHastags() {
+        return hastags;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setHastags(String hastags) {
+        this.hastags = hastags;
     }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    
 
     @Override
     public int hashCode() {
@@ -100,7 +123,7 @@ public class Person{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Person other = (Person) obj;
+        final Post other = (Post) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
