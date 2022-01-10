@@ -21,7 +21,7 @@ public class Post_Textao {
     
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idpost;
+    private Long id;
      
     @Column(nullable = false, unique = true, length = 45)
     private String idperson;
@@ -29,18 +29,48 @@ public class Post_Textao {
     @Column(nullable = false)
     private String texto;
 
-    public Post_Textao(Long idpost, String idperson, String texto) {
-        this.idpost = idpost;
+    @Column(nullable = false, unique = true, length = 45)
+    private String email;
+     
+    /*1 - Texto
+      2 - Imagem
+      3 - Video
+      4 - Enquete
+      5 - Stories
+      6 - Reel*/
+    @Column(nullable = false, length = 1)
+    private String tipo;
+     
+    @Column(name = "hora", nullable = false, length = 20)
+    private String hora;
+     
+    @Column(name = "hastags", nullable = false)
+    private String hastags;
+    
+    @Column(name = "local", nullable = false)
+    private String local;
+
+     public Post_Textao() {
+        super();
+    }
+    
+    public Post_Textao(Long id, String idperson, String texto, String email, String tipo, String hora, String hastags, String local) {
+        this.id = id;
         this.idperson = idperson;
         this.texto = texto;
+        this.email = email;
+        this.tipo = tipo;
+        this.hora = hora;
+        this.hastags = hastags;
+        this.local = local;
     }
 
-    public Long getIdpost() {
-        return idpost;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdpost(Long idpost) {
-        this.idpost = idpost;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getIdperson() {
@@ -59,10 +89,50 @@ public class Post_Textao {
         this.texto = texto;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getHastags() {
+        return hastags;
+    }
+
+    public void setHastags(String hastags) {
+        this.hastags = hastags;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.idpost);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -78,11 +148,11 @@ public class Post_Textao {
             return false;
         }
         final Post_Textao other = (Post_Textao) obj;
-        if (!Objects.equals(this.idpost, other.idpost)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
-     
+    
     
 }

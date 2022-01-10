@@ -15,7 +15,7 @@ public class Post{
     
   
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true, length = 45)
     private Long id;
      
     @Column(nullable = false, unique = true, length = 45)
@@ -33,7 +33,7 @@ public class Post{
     @Column(nullable = false, length = 1)
     private String tipo;
      
-    @Column(name = "hora", nullable = false, length = 10)
+    @Column(name = "hora", nullable = false, length = 45)
     private String hora;
      
     @Column(name = "hastags", nullable = false)
@@ -46,9 +46,10 @@ public class Post{
         super();
     }
 
-    public Post(Long id, String email, String tipo, String hora, String hastags, String local) {
+    public Post(Long id, String email, String idperson, String tipo, String hora, String hastags, String local) {
         this.id = id;
         this.email = email;
+        this.idperson = idperson;
         this.tipo = tipo;
         this.hora = hora;
         this.hastags = hastags;
@@ -69,6 +70,14 @@ public class Post{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getIdperson() {
+        return idperson;
+    }
+
+    public void setIdperson(String idperson) {
+        this.idperson = idperson;
     }
 
     public String getTipo() {
@@ -103,12 +112,10 @@ public class Post{
         this.local = local;
     }
 
-    
-
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -129,8 +136,6 @@ public class Post{
         }
         return true;
     }
-     
-    
-     
+
 
 }

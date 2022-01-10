@@ -17,12 +17,15 @@ public class Comentario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false, length = 45)
     private Long idpost;
     
     @Column(nullable = false)
     private String comentario;
     
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private String idperson;
     
     @Column(nullable = false)
@@ -30,14 +33,22 @@ public class Comentario {
     
     @Column(nullable = true)
     private String count_curtidas;
-    
 
-    public Comentario(Long idpost, String comentario, String idperson, String hora, String count_curtidas) {
+    public Comentario(Long id, Long idpost, String comentario, String idperson, String hora, String count_curtidas) {
+        this.id = id;
         this.idpost = idpost;
         this.comentario = comentario;
         this.idperson = idperson;
         this.hora = hora;
         this.count_curtidas = count_curtidas;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getIdpost() {
@@ -80,12 +91,10 @@ public class Comentario {
         this.count_curtidas = count_curtidas;
     }
 
-    
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.idpost);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -101,12 +110,11 @@ public class Comentario {
             return false;
         }
         final Comentario other = (Comentario) obj;
-        if (!Objects.equals(this.idpost, other.idpost)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
     }
     
 
-    
 }
