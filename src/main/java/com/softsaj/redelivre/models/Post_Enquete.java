@@ -16,7 +16,7 @@ public class Post_Enquete {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idpost;
+    private Long id;
      
     @Column(nullable = false, unique = true, length = 45)
     private String idperson;
@@ -38,9 +38,30 @@ public class Post_Enquete {
     
     @Column(nullable = true)
     private String total_resposta;
+    
+     @Column(nullable = false, unique = true, length = 45)
+    private String email;
+     
+    /*1 - Texto
+      2 - Imagem
+      3 - Video
+      4 - Enquete
+      5 - Stories
+      6 - Reel*/
+    @Column(nullable = false, length = 1)
+    private String tipo;
+     
+    @Column(name = "hora", nullable = false, length = 20)
+    private String hora;
+     
+    @Column(name = "hastags", nullable = false)
+    private String hastags;
+    
+    @Column(name = "local", nullable = false)
+    private String local;
 
-    public Post_Enquete(Long idpost, String idperson, String Pergunta, String Resposta1, String Resposta2, String Resposta3, String Resposta4, String total_resposta) {
-        this.idpost = idpost;
+    public Post_Enquete(Long id, String idperson, String Pergunta, String Resposta1, String Resposta2, String Resposta3, String Resposta4, String total_resposta, String email, String tipo, String hora, String hastags, String local) {
+        this.id = id;
         this.idperson = idperson;
         this.Pergunta = Pergunta;
         this.Resposta1 = Resposta1;
@@ -48,14 +69,23 @@ public class Post_Enquete {
         this.Resposta3 = Resposta3;
         this.Resposta4 = Resposta4;
         this.total_resposta = total_resposta;
+        this.email = email;
+        this.tipo = tipo;
+        this.hora = hora;
+        this.hastags = hastags;
+        this.local = local;
     }
 
-    public Long getIdpost() {
-        return idpost;
+    public Post_Enquete() {
+        super();
     }
 
-    public void setIdpost(Long idpost) {
-        this.idpost = idpost;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getIdperson() {
@@ -113,34 +143,46 @@ public class Post_Enquete {
     public void setTotal_resposta(String total_resposta) {
         this.total_resposta = total_resposta;
     }
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getHastags() {
+        return hastags;
+    }
+
+    public void setHastags(String hastags) {
+        this.hastags = hastags;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
    
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.idpost);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Post_Enquete other = (Post_Enquete) obj;
-        if (!Objects.equals(this.idpost, other.idpost)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-    
 }
