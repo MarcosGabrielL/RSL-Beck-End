@@ -100,7 +100,7 @@ person.setLastName(user.getLastName());
     
      
     return new ResponseEntity<>(newUser, HttpStatus.CREATED);
-}
+} 
 
     @GetMapping("/users")
     public String listUsers(Model model) {

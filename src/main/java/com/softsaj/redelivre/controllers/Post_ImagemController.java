@@ -53,21 +53,21 @@ public class Post_ImagemController {
         
     //Add post Texto
     @PostMapping("/imagem/add")
-    public ResponseEntity<Post_Imagem> addMovie( 
-            @RequestBody Post_Imagem post_imagem,
-                    @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<?> addMovie( 
+            @RequestBody Post_Imagem post_imagem //@RequestParam("file") MultipartFile file
+            ) {
         
     String message = "";
     Post_Imagem newPost_Imagem = new Post_Imagem();
     try {
-      FileDB filedb = storageService.store(file);
+      //FileDB filedb = storageService.store(file);
 
-      message = "Uploaded the file successfully: " + file.getOriginalFilename();
+      //message = "Uploaded the file successfully: " + file.getOriginalFilename();
       
         //SALVA POST_ GERA ID
         post_imagem.setHora(HoraServidor.HoraServidor());
         newPost_Imagem = vs.addPost_Imagem(post_imagem);
-        newPost_Imagem.setIdimagem(filedb.getId().toString());
+       // newPost_Imagem.setIdimagem(filedb.getId().toString());
         
         //Salva POST COM ID 
         Post post = new Post();
@@ -83,9 +83,9 @@ public class Post_ImagemController {
          URI uri = ServletUriComponentsBuilder.
                 fromCurrentRequest().path("/post/{id}").buildAndExpand(post_imagem.getId()).toUri();
          
-         return new ResponseEntity<>(newPost_Imagem, HttpStatus.CREATED);
+         return new ResponseEntity<>(newPost, HttpStatus.CREATED);
     } catch (Exception e) {
-      message = "Could not upload the file: " + file.getOriginalFilename() + "! "+e.getLocalizedMessage();
+      message = "Could not upload the file: " ;//+ file.getOriginalFilename() + "! "+e.getLocalizedMessage();
       return new ResponseEntity<>(newPost_Imagem, HttpStatus.EXPECTATION_FAILED);
     }
           

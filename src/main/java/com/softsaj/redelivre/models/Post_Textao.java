@@ -23,13 +23,13 @@ public class Post_Textao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
      
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, unique = false, length = 45)
     private String idperson;
      
     @Column(nullable = false)
     private String texto;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, unique = false, length = 45)
     private String email;
      
     /*1 - Texto

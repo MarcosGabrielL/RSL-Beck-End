@@ -135,5 +135,21 @@ public class FileControllerVenda {
             .contentType(MediaType.IMAGE_PNG).body(fileDB.getData());
   }
   
+
+  @PostMapping(value = "/post/uploadFile", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  public ResponseEntity<ResponseMessage> uploadFilePost(@RequestParam("file") MultipartFile file,
+          @RequestParam("idproduct") String idproduct) {
+    String message = "";
+    try {
+      storageService.store(file, idproduct, null);
+
+      message = "Uploaded the file successfully: " + file.getOriginalFilename();
+      return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+    } catch (Exception e) {
+      message = "Could not upload the file: " + file.getOriginalFilename() + "! "+e.getLocalizedMessage();
+      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+    }
+  }
+  
   
 }

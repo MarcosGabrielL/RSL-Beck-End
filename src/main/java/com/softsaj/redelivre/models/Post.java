@@ -18,10 +18,10 @@ public class Post{
     @Column(nullable = false, unique = true, length = 45)
     private Long id;
      
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, unique = false, length = 45)
     private String email;
     
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, unique = false, length = 45)
     private String idperson;
      
     /*1 - Texto
@@ -36,10 +36,10 @@ public class Post{
     @Column(name = "hora", nullable = false, length = 45)
     private String hora;
      
-    @Column(name = "hastags", nullable = false)
+    @Column(name = "hastags", nullable = true)
     private String hastags;
     
-    @Column(name = "local", nullable = false)
+    @Column(name = "local", nullable = true)
     private String local;
 
     public Post() {

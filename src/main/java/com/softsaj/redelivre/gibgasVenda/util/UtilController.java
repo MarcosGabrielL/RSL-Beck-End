@@ -23,7 +23,7 @@ public class UtilController {
     
     @GetMapping("/HoraServidor")
     public ResponseEntity<String> getTempoDecorrido () {
-       
+       //System.err.println("#####################     "+HoraServidor.HoraServidor());
      return new ResponseEntity<>(HoraServidor.HoraServidor(), HttpStatus.OK);
     } 
     
